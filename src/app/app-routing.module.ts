@@ -6,9 +6,14 @@ import { ApplyFormComponent } from './Components/apply-form/apply-form.component
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AddJobComponent } from './Components/add-job/add-job.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 const routes: Routes = [
-  { path: '', component: JobListComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'Jobs', component: JobListComponent },
   { path: 'jobs/:id', component: JobDetailComponent ,title:'jobs'},
   { path: 'apply/:id', component: ApplyFormComponent,title:'apply' },
   { path: 'navbar', component: NavbarComponent },

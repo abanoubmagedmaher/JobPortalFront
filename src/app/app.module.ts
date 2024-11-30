@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AddJobComponent } from './Components/add-job/add-job.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AddJobComponent } from './Components/add-job/add-job.component';
     JobDetailComponent,
     NavbarComponent,
     FooterComponent,
-    AddJobComponent
+    AddJobComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
