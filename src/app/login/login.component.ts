@@ -36,6 +36,9 @@ onSubmit() {
 
   this.authService.login(user).subscribe(
     (response) => {
+
+      localStorage.setItem('eToken', response.token);
+      this.authService.saveUserData();
       this.router.navigate(['/Jobs']);
     },
     (error) => {
