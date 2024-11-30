@@ -8,13 +8,17 @@ import { JobListComponent } from './Components/job-list/job-list.component';
 import { JobDetailComponent } from './Components/job-detail/job-detail.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApplyFormComponent,
     JobListComponent,
-    JobDetailComponent
+    JobDetailComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
