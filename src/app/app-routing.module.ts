@@ -5,6 +5,7 @@ import { JobDetailComponent } from './Components/job-detail/job-detail.component
 import { ApplyFormComponent } from './Components/apply-form/apply-form.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { AddJobComponent } from './Components/add-job/add-job.component';
 
 const routes: Routes = [
   { path: '', component: JobListComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'apply/:id', component: ApplyFormComponent,title:'apply' },
   { path: 'navbar', component: NavbarComponent },
   { path: 'footer', component: FooterComponent },
+  { path: 'addjob', component:AddJobComponent,title:'Add Job ' }
 
 ];
 

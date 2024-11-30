@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { ApplyFormComponent } from './Components/apply-form/apply-form.component';
 import { JobListComponent } from './Components/job-list/job-list.component';
 import { JobDetailComponent } from './Components/job-detail/job-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { AddJobComponent } from './Components/add-job/add-job.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { FooterComponent } from './Components/footer/footer.component';
     JobListComponent,
     JobDetailComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AddJobComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,  // Add this line
+    HttpClientModule,  
+    ReactiveFormsModule
 
   ],
   providers: [],

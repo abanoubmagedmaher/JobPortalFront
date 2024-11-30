@@ -32,6 +32,12 @@ export class JobService {
 
     return this.http.post(`${this.baseUrl}/application`,formData)
   }
+
+  addjob(job:any):Observable<any>{
+    return this.http.post(`${this.baseUrl}/Job/addJob`,job,{
+      headers: { 'Content-Type': 'application/json' }
+    })
+  }
   //#endregion
 }
 
