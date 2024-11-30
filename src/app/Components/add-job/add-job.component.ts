@@ -26,12 +26,13 @@ onSubmit(){
     this.JobService.addjob(this.jobForm.value).subscribe({
       next: (res) =>
         {
-          alert('Job added successfully!');
+          // this.toastr.success("Job added successfully");
           this.jobForm.reset();
         },
         error: (err) =>{
           console.log(err);
-          alert('Failed to add job.');
+          // this.toastr.error('Failed to add job');
+           
         }
     })
   }
