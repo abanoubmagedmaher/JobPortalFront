@@ -15,9 +15,9 @@ export class AddJobComponent {
       id:[0],
       title:['',Validators.required],
       company: ['', Validators.required],
-      location: [''],
-      description: [''],
-      requirements: [''],
+      location: ['',Validators.required],
+      description: ['',Validators.required],
+      requirements: ['',Validators.required],
     });
   }
 
