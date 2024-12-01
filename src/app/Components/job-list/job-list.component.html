@@ -1,19 +1,99 @@
-<div class="container mt-4">
-    <h2>Job Listings</h2>
-    <div *ngIf="jobs.length; else noJobs">
-      <div *ngFor="let job of jobs" class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">{{ job.title }}</h5>
-          <p><strong>Company</strong> {{job.company}}</p>
-          <p><strong>Location:</strong> {{job.location}}</p>
-          <a [routerLink]="['/jobs', job.id]" class="btn btn-primary">View Details</a>
+<div   class="container">
+<div class="row m-2 cursor-pointer">
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>150</h3>
 
-        </div>
-        </div>
+        <p>New Job</p>
+      </div>
+      <div class="icon">
+        <i class="fas"></i>
+      </div>
+      <a class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
     </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>300<sup style="font-size: 25px">+</sup></h3>
 
+        <p>Employees</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a  class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>44</h3>
+
+        <p>User Registrations</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <a  class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>65</h3>
+
+        <p>Unique Visitors</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-chart-pie"></i>
+      </div>
+      <a  class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+</div>
+<!-- Start Show Jobs  -->
+<div class="container mt-4">
     <ng-template #noJobs>
-        <p>No jobs found</p>
+        <div class="alert alert-info" role="alert">
+          No jobs found
+        </div>
     </ng-template>
-    
+</div>
+<div *ngIf="jobs.length; else noJobs"  class="container">
+  <div  *ngFor="let job of jobs" class="card card-primary card-outline">
+    <div class="card-header">
+      <h5 class="m-0">{{ job.title }}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><strong> Requirements:-</strong> {{job.requirements}}</p>
+      <p class="card-text"><strong> Description:-</strong> {{job.description}}</p>
+
+      <ul class="ml-4 mb-2 fa-ul text-muted">
+        <li class=""><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>{{job.company}}</li>
+        <li class=""><span class="fa-li"><i class="fas fa-lg fa-map-marker-alt"></i></span>{{job.location}}</li>
+      </ul>
+      <a [routerLink]="['/jobs', job.id]" class="btn btn-primary">View Details</a>
+
+    </div>
+  </div>
+</div>
+
 </div>
