@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent {
   submitted = false;
   errorMessage: string = '';
 
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private router:Router)
+  constructor(private formBuilder:FormBuilder,
+    private authService:AuthService,
+    private router:Router,
+    private toaster:ToastrService
+  )
   {
     this.loginForm=this.formBuilder.group({
       email:['',[Validators.required,Validators.email]],
@@ -39,10 +44,12 @@ onSubmit() {
 
       localStorage.setItem('eToken', response.token);
       this.authService.saveUserData();
+      this.toaster.success('Login successful', 'Success');
       this.router.navigate(['/Jobs']);
     },
     (error) => {
       this.errorMessage = 'Login failed. Please try again.';
+      this.toaster.error('Login failed', 'Error');
     }
   );
 }

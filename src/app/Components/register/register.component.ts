@@ -2,6 +2,7 @@ import { AuthService } from './../../Services/auth.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent {
   submitted = false;
   errorMessage: string = '';
 
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private router:Router)
+  constructor(private formBuilder:FormBuilder,    private toaster:ToastrService
+    ,private authService:AuthService,private router:Router)
   {
     this.registerForm=this.formBuilder.group({
       email:['',[Validators.required,Validators.email]],
@@ -36,9 +38,11 @@ onSubmit() {
   this.authService.register(user).subscribe(
     (response) => {
       this.router.navigate(['/login']);
+      this.toaster.success('Registration successful', 'Success');
     },
     (error) => {
       this.errorMessage = 'Registration failed. Please try again.';
+      this.toaster.error('Registration failed', 'Error');
     }
   );
 }

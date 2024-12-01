@@ -1,7 +1,7 @@
 <body class="login-page" style="min-height: 496.781px;">
   <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Job</b>Portal</a>
+      <a  routerLink="/login" ><b>Job </b>Portal</a>
     </div>
     <div class="card">
       <div class="card-body login-card-body">
@@ -33,14 +33,8 @@
           <div *ngIf="f['password'].touched && f['password'].invalid" class="text-danger">
             Password is required and must be at least 6 characters.
           </div>
-
-          <!-- Remember Me Checkbox -->
           <div class="row">
             <div class="col-8">
-              <!-- <div class="icheck-primary">
-                <input type="checkbox" id="remember" formControlName="rememberMe" />
-                <label for="remember">Remember Me</label>
-              </div> -->
             </div>
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">
