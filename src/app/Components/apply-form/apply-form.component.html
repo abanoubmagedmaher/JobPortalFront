@@ -1,55 +1,82 @@
-
-   <div class="container mt-4">
-    <form (ngSubmit)="onSubmit()" #applyForm="ngForm">
-      <!-- Name Field -->
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input
-          type="text"
-          id="name"
-          [(ngModel)]="application.name"
-          name="name"
-          class="form-control"
-          required
-          #name="ngModel"
-        />
-        <!-- Validation Message for Name -->
-        <div *ngIf="name.touched && name.invalid" class="text-danger">
-          <small *ngIf="name.errors?.['required']">Name is required.</small>
+<div class=" py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Apply for a Job</h4>
+          </div>
+          <div class="card-body p-4">
+            <form (ngSubmit)="onSubmit()" #applyForm="ngForm" novalidate>
+              <!-- Name Field -->
+              <div class="mb-4">
+                <label for="name" class="form-label fw-semibold">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  [(ngModel)]="application.name"
+                  name="name"
+                  class="form-control rounded-pill"
+                  placeholder="Enter your name"
+                  required
+                  #name="ngModel"
+                />
+                <!-- Validation Message for Name -->
+                <div *ngIf="name.touched && name.invalid" class="text-danger mt-2 small">
+                  <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                  <span *ngIf="name.errors?.['required']">Name is required.</span>
+                </div>
+              </div>
+  
+              <!-- Email Field -->
+              <div class="mb-4">
+                <label for="email" class="form-label fw-semibold">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="application.email"
+                  name="email"
+                  class="form-control rounded-pill"
+                  placeholder="Enter your email"
+                  required
+                  #email="ngModel"
+                />
+                <!-- Validation Message for Email -->
+                <div *ngIf="email.touched && email.invalid" class="text-danger mt-2 small">
+                  <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                  <span *ngIf="email.errors?.['required']">Email is required.</span>
+                  <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+                </div>
+              </div>
+  
+              <!-- Resume Field -->
+              <div class="mb-4">
+                <label for="resume" class="form-label fw-semibold">Resume (PDF, DOCX)</label>
+                <input
+                  type="file"
+                  id="resume"
+                  (change)="onFileSelect($event)"
+                  class="form-control"
+                  required
+                />
+                <small class="text-muted d-block mt-1">Max size: 5MB</small>
+              </div>
+  
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg rounded-pill"
+                  [disabled]="applyForm.invalid"
+                  data-bs-toggle="tooltip"
+                  title="Ensure all fields are valid before submitting"
+                >
+                  <i class="bi bi-send-fill me-1"></i> Submit Application
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-  
-      <!-- Email Field -->
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="application.email"
-          name="email"
-          class="form-control"
-          required
-          #email="ngModel"
-        />
-        <!-- Validation Message for Email -->
-        <div *ngIf="email.touched && email.invalid" class="text-danger">
-          <small *ngIf="email.errors?.['required']">Email is required.</small>
-          <small *ngIf="email.errors?.['email']">Please enter a valid email address.</small>
-        </div>
-      </div>
-  
-      <!-- Resume Field -->
-      <div class="mb-3">
-        <label for="resume" class="form-label">Resume</label>
-        <input type="file" id="resume" (change)="onFileSelect($event)" class="form-control" required />
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="applyForm.invalid">
-        Submit Application
-      </button>
-    </form>
+    </div>
   </div>
-  
-
-
   

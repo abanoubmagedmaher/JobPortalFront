@@ -1,65 +1,59 @@
-<section class="content m-5" *ngIf="job">
+<section class="content my-5" *ngIf="job">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
-        <div class="card card-primary card-outline">
-          <div class="card-body box-profile">
-            <h3 class="profile-username text-center">{{ job.company }}</h3>
-            <ul class="list-group list-group-unbordered mb-3">
-              <li class="list-group-item">
-                <b>Employees</b> <a class="float-right">500+</a>
-              </li>
-            </ul>
-            <a routerLink="/contactus" class="btn btn-primary btn-block"><b>Contact Us</b></a>
+      <!-- Sidebar - Company Details -->
+      <div class="col-md-4 col-lg-3">
+        <div class="card shadow-lg border-0">
+          <div class="card-body text-center">
+            <h3 class="profile-username mb-3">{{ job.company }}</h3>
+            <p class="text-muted small">500+ Employees</p>
+            <a routerLink="/contactus" class="btn btn-primary rounded-pill px-4 mt-3">
+              <i class="bi bi-envelope-fill me-2"></i>Contact Us
+            </a>
           </div>
         </div>
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">About Company</h3>
+        <div class="card shadow-lg border-0 mt-4">
+          <div class="card-header bg-primary text-white text-center">
+            <h5 class="mb-0">About Company</h5>
           </div>
           <div class="card-body">
-            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-            <p class="text-muted">{{ job.location }}</p>
-            <hr>
-            <strong><i class="fas fa-pencil-alt mr-1"></i> Requirements</strong>
-
-            <p class="text-muted">
-              <span class="tag tag-primary">{{ job.requirements }}</span>
-            </p>
-            <hr>
-            <strong><i class="far fa-file-alt mr-1"></i> Description</strong>
-            <p class="text-muted">{{ job.description }}</p>
-          </div>
-        </div>
-      </div>
-      <!-- /.col -->
-      <div class="col-md-9 mt-5">
-        <div class="card">
-
-          <div class="card-body">
-            <div class="tab-content">
-              <div class="tab-pane active" id="activity">
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <span class="username">
-                      <a>{{job.description}}</a>
-                    </span>
-                  </div>
-                  <a [routerLink]="['/apply', job.id]" class="form-control  btn btn-success">Apply Now</a>
-                </div>
-              </div>
-              <div class="tab-pane" id="timeline">
-
-              </div>
-
+            <div class="mb-3">
+              <strong><i class="fas fa-map-marker-alt mr-1"></i> Location:</strong>
+              <p class="text-muted mb-0">{{ job.location }}</p>
+            </div>
+            <hr />
+            <div class="mb-3">
+              <strong><i class="fas fa-pencil-alt mr-1"></i>Requirements:</strong>
+              <p class="text-muted mb-0">
+                <span class="badge bg-primary">{{ job.requirements }}</span>
+              </p>
+            </div>
+            <hr />
+            <div>
+              <strong><i class="far fa-file-alt mr-1"></i> Description:</strong>
+              <p class="text-muted">{{ job.description }}</p>
             </div>
           </div>
         </div>
-
       </div>
 
+      <!-- Main Content - Job Description -->
+      <div class="col-md-8 col-lg-9">
+        <div class="card shadow-lg border-0">
+          <div class="card-body">
+            <h4 class="text-primary mb-4">Job Details</h4>
+            <p class="text-muted">{{ job.description }}</p>
+            <div class="text-center mt-4">
+              <a
+                [routerLink]="['/apply', job.id]"
+                class="btn btn-success btn-lg rounded-pill px-5"
+              >
+                <i class="bi bi-check-circle-fill me-2"></i>Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 </section>
