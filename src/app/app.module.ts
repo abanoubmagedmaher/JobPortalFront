@@ -7,13 +7,17 @@ import { ApplyFormComponent } from './Components/apply-form/apply-form.component
 import { JobListComponent } from './Components/job-list/job-list.component';
 import { JobDetailComponent } from './Components/job-detail/job-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { AddJobComponent } from './Components/add-job/add-job.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './login/login.component';
+import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+import { ApplicationListComponent } from './Components/application-list/application-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,17 +28,26 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     AddJobComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ApplicationListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,  
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptorInterceptor, 
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,6 +35,10 @@ export class AuthService {
     }
   }
 
+  getToken(): any {
+     return localStorage.getItem('eToken');  // Assuming you store the token in localStorage
+  }
+
 }
 
 

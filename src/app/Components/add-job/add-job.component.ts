@@ -1,6 +1,8 @@
 import { JobService } from './../../Services/job.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-job',
@@ -10,7 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddJobComponent {
   jobForm!: FormGroup;
 
-  constructor(private fb:FormBuilder,private JobService:JobService){
+  constructor(private fb:FormBuilder,private JobService:JobService,  private toastr: ToastrService,
+    private _router:Router){
     this.jobForm=this.fb.group({
       id:[0],
       title:['',Validators.required],
@@ -26,13 +29,13 @@ onSubmit(){
     this.JobService.addjob(this.jobForm.value).subscribe({
       next: (res) =>
         {
-          // this.toastr.success("Job added successfully");
+          this.toastr.success('Job added successfully!', 'Success'); 
           this.jobForm.reset();
+          this._router.navigate(['/Jobs'])  
         },
         error: (err) =>{
           console.log(err);
-          // this.toastr.error('Failed to add job');
-           
+          this.toastr.error(`An error occurred while Add Job .`);           
         }
     })
   }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ApplicationDto } from '../../Models/application-dto';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../../Services/job.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-apply-form',
   templateUrl: './apply-form.component.html',
@@ -10,22 +10,37 @@ import { JobService } from '../../Services/job.service';
 })
 export class ApplyFormComponent {
 
-  application:ApplicationDto={name:'',email:'',jobId:0,resume:null!};
-  
-  constructor(private JobService:JobService,private route:ActivatedRoute) { }
+application: ApplicationDto = { name: '', email: '', jobId: 0, resume: null! };
 
-  ngOnInit(): void {
-    this.application.jobId= + this.route.snapshot.paramMap.get('id')!;
-  }
-  onFileSelect(event: any): void {
-    this.application.resume = event.target.files[0];
-  }
+constructor(
+  private JobService: JobService,
+  private route: ActivatedRoute,
+  private toastr: ToastrService,
+  private _router:Router
+) { }
 
-  onSubmit(): void {
-    this.JobService.submitApplication(this.application).subscribe((data) => {
-      alert('Application submitted successfully!');
-    })
-
+ngOnInit(): void {
+  this.application.jobId = +this.route.snapshot.paramMap.get('id')!;
 }
 
+onFileSelect(event: any): void {
+  this.application.resume = event.target.files[0];
+}
+
+onSubmit(): void {
+  if (!this.application.name || !this.application.email || !this.application.resume) {
+    this.toastr.error('Please fill out all fields and try again.', 'Validation Error');
+    return;
+  }
+
+  this.JobService.submitApplication(this.application).subscribe(
+    (data) => {
+      this.toastr.success('Your application has been submitted successfully!', 'Success'); 
+      this._router.navigate(['/applicationlist'])   
+    },
+    (error) => {
+      this.toastr.error(`An error occurred while submitting your application .`);
+    }
+  );
+}
 }
