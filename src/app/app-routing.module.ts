@@ -9,6 +9,7 @@ import { AddJobComponent } from './Components/add-job/add-job.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ApplicationListComponent } from './Components/application-list/application-list.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'addjob', component:AddJobComponent,title:'Add Job ' },
-  { path: 'applicationlist', component:ApplicationListComponent,title:'Application list' }
+  { path: 'applicationlist', component:ApplicationListComponent,title:'Application list' },
+  { path: 'contactus', component:ContactUsComponent,title:'ContactUs' }
+
 
 
 ];

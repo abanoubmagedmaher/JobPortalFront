@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { ApplicationListComponent } from './Components/application-list/application-list.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { ApplicationListComponent } from './Components/application-list/applicat
     AddJobComponent,
     RegisterComponent,
     LoginComponent,
-    ApplicationListComponent
+    ApplicationListComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
