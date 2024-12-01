@@ -1,10 +1,10 @@
 <h1>Applications List </h1>
-<section class="content">
+<section class="content" *ngIf="applications.length; else noApplication"  >
     <!-- Default box -->
     <div class="card card-solid">
       <div class="card-body pb-0">
         <div class="row">
-          <div    *ngFor="let application of applications" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+          <div    *ngFor="let application of applications"  class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
             <div class="card bg-light d-flex flex-fill">
               <div class="card-header text-muted border-bottom-0">
                 {{ application.job.title }}
@@ -31,40 +31,27 @@
                   <a  class="btn btn-sm bg-teal">
                     <i class="fas fa-comments"></i>
                   </a>
-                  <a href="#" class="btn btn-sm btn-primary">
-                    <i class="fas fa-user"></i> View Profile
+                  <a [routerLink]="['/viewapplication', application.id]"  class="btn btn-sm btn-primary">
+                    <i class="fas fa-user"></i> View Application
                   </a>
                 </div>
               </div>
             </div>
           </div>
-       
-
-
         </div>
       </div>
-      <!-- /.card-body -->
-      <div class="card-footer">
-        <nav aria-label="Contacts Page Navigation">
-          <ul class="pagination justify-content-center m-0">
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">6</a></li>
-            <li class="page-item"><a class="page-link" href="#">7</a></li>
-            <li class="page-item"><a class="page-link" href="#">8</a></li>
-          </ul>
-        </nav>
-      </div>
-      <!-- /.card-footer -->
     </div>
     <!-- /.card -->
 
   </section>
 
-
+  <div class="container mt-4">
+    <ng-template #noApplication>
+        <div class="alert alert-info" role="alert">
+          No Application found
+        </div>
+    </ng-template>
+</div>
   <!-- <h1>Applications List</h1>
 <section class="content">
   <div class="card card-solid">

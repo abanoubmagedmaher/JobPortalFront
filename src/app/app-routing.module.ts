@@ -1,3 +1,4 @@
+import { ViewApplicationComponent } from './Components/view-application/view-application.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JobListComponent } from './Components/job-list/job-list.component';
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'addjob', component:AddJobComponent,title:'Add Job ' },
   { path: 'applicationlist', component:ApplicationListComponent,title:'Application list' },
-  { path: 'contactus', component:ContactUsComponent,title:'ContactUs' }
+  { path: 'contactus', component:ContactUsComponent,title:'ContactUs' },
+  { path: 'viewapplication/:id', component:ViewApplicationComponent,title:'View Application' },
+
 
 
 

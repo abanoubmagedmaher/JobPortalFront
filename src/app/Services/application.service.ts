@@ -12,4 +12,7 @@ export class ApplicationService {
   getAllApplications():Observable<any>{
     return this.http.get(`${this.baseApi}/getAll`);
   }
+  getApplicationById(id: number): Observable<any> {
+    return this.http.get(`${this.baseApi}/getApplicationById/${id}`);
+  }
 }
