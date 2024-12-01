@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ApplicationListComponent } from './Components/application-list/application-list.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { AboutComponent } from './Components/about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,6 +27,9 @@ const routes: Routes = [
   { path: 'applicationlist', component:ApplicationListComponent,title:'Application list' },
   { path: 'contactus', component:ContactUsComponent,title:'ContactUs' },
   { path: 'viewapplication/:id', component:ViewApplicationComponent,title:'View Application' },
+  { path: 'about', component:AboutComponent,title:'About' },
+  { path:'nofound',component:NotFoundComponent,title:'Not Found'},
+  { path: '**', redirectTo: '/nofound' }
 
 
 

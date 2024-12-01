@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ApplicationListComponent } from './Components/application-list/application-list.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { ViewApplicationComponent } from './Components/view-application/view-application.component';
+import { AboutComponent } from './Components/about/about.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { ViewApplicationComponent } from './Components/view-application/view-app
     LoginComponent,
     ApplicationListComponent,
     ContactUsComponent,
-    ViewApplicationComponent
+    ViewApplicationComponent,
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

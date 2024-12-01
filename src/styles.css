@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background: linear-gradient(135deg, #f8fafc, #eef2f6);
+    color: #1c1c3c;
+    font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Cards */
+  .card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    background-color: #0078ff;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #005fcc;
+  }
+  
+  .btn-success {
+    background-color: #32cd32;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #28a428;
+  }
+  
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    color: #1c1c3c;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  a {
+    color: #0078ff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Job Tags */
+  .tag {
+    display: inline-block;
+    background-color: #eef2f6;
+    color: #0078ff;
+    border-radius: 15px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
