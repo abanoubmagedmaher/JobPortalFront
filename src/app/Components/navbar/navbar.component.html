@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Job Portal</a>
+    <a class="navbar-brand" routerLink="/Jobs">Job Portal</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,8 +29,9 @@
         </li>
       </ul>
       <div class="d-flex">
-        <button class="btn btn-primary" routerLink="/addjob" ><i class="fa-solid fa-plus"></i>
-          Post a Job</button>
+          <button type="button" routerLink="/addjob" class="btn btn-block btn-outline-primary btn-sm"><i class="fa-solid fa-plus"></i> Post a Job</button>
+          <a class="btn" routerLink="/login" >
+            <i class="fa-solid fa-right-to-bracket"></i></a>
       </div>
     </div>
   </div>
