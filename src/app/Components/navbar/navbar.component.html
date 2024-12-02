@@ -21,8 +21,12 @@
       </ul>
       <div class="d-flex">
           <button type="button" routerLink="/addjob" class="btn btn-block btn-outline-primary btn-sm"><i class="fa-solid fa-plus"></i> Post a Job</button>
-          <a class="btn" routerLink="/login" >
-            <i class="fa-solid fa-right-to-bracket"></i></a>
+          <a class="btn " routerLink="/login" > Login
+            <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
+          </a>
+          <a class="btn" routerLink="/login" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </a>
       </div>
     </div>
   </div>

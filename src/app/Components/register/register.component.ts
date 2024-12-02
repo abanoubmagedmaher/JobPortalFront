@@ -13,6 +13,7 @@ export class RegisterComponent {
   registerForm!: FormGroup;
   submitted = false;
   errorMessage: string = '';
+  errorMessage1:string='';
 
   constructor(private formBuilder:FormBuilder,    private toaster:ToastrService
     ,private authService:AuthService,private router:Router)
@@ -41,8 +42,9 @@ onSubmit() {
       this.toaster.success('Registration successful', 'Success');
     },
     (error) => {
-      this.errorMessage = 'Registration failed. Please try again.';
-      this.toaster.error('Registration failed', 'Error');
+      this.errorMessage = 'Please Enter a Valid E-mail like Example@example.example';
+      this.errorMessage1 = 'Or Password like Example@2024 and Try Again.';
+      this.toaster.error('Please enter a valid Email or Password', 'Registration failed ');
     }
   );
 }

@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './apply-form.component.css'
 })
 export class ApplyFormComponent {
-
+  errorMessage:string=''
 application: ApplicationDto = { name: '', email: '', jobId: 0, resume: null! };
 
 constructor(
@@ -30,6 +30,8 @@ onFileSelect(event: any): void {
 onSubmit(): void {
   if (!this.application.name || !this.application.email || !this.application.resume) {
     this.toastr.error('Please fill out all fields and try again.', 'Validation Error');
+    this.errorMessage='Please fill out all fields and Enter a Valid E-mail like Example@example.example'
+
     return;
   }
 
@@ -40,9 +42,10 @@ onSubmit(): void {
     },
     (error) => {
       if (error.status === 401) {
-        this.toastr.warning('You need to log in to submit the Job application.', 'Unauthorized');
+        this.toastr.warning('You need to log in to submit the Job application.');
         this._router.navigate(['/login']);
-      } else {
+      } 
+      else {
         this.toastr.error('An error occurred while submitting your application.', 'Error');
       }    }
   );

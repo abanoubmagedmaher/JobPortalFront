@@ -44,12 +44,12 @@ onSubmit() {
 
       localStorage.setItem('eToken', response.token);
       this.authService.saveUserData();
-      this.toaster.success('Login successful', 'Success');
+      this.toaster.success(' Welcome back! 😊', 'Success');
       this.router.navigate(['/Jobs']);
     },
     (error) => {
-      this.errorMessage = 'Login failed. Please try again.';
-      this.toaster.error('Login failed', 'Error');
+      this.errorMessage = 'Incorrect E-mail or password Please try again.';
+      this.toaster.error(' Incorrect E-mail or password.', 'Error');
     }
   );
 }

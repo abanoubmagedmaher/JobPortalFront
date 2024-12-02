@@ -8,6 +8,9 @@
           <div class="card-body p-4">
             <form (ngSubmit)="onSubmit()" #applyForm="ngForm" novalidate>
               <!-- Name Field -->
+              <div *ngIf="errorMessage" class="text-danger mt-3">
+                {{ errorMessage }} 
+              </div>
               <div class="mb-4">
                 <label for="name" class="form-label fw-semibold">Full Name</label>
                 <input

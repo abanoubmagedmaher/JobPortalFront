@@ -1,4 +1,7 @@
 <body class="login-page" style="min-height: 496.781px;">
+  <div *ngIf="errorMessage" class="text-danger mt-3">
+    {{ errorMessage }}
+  </div>
   <div class="login-box">
     <div class="login-logo">
       <a  routerLink="/login" ><b>Job </b>Portal</a>
