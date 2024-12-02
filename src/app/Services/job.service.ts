@@ -15,6 +15,42 @@ export class JobService {
 
   constructor(private http:HttpClient,private router:Router,private authService:AuthService) { }
 
+
+
+  IsToken:any;
+  gettoken:any;
+  head:any;
+  JWT_TOKEN="eToken";
+  //JWT_TOKEN1='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0QGdtYWlsLmNvbSIsImp0aSI6ImY5NTlhYjRjLWIwZjYtNGRiZS1hZWZjLTA2ZGUwODZmNzEwNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjViNmU5ZWYtYjZkYi00NmFkLWE5OWQtODIwZmYxZDdlNWFlIiwiZXhwIjoxNzMzMjQwMzYzLCJpc3MiOiJZb3VySXNzdWVyIiwiYXVkIjoiWW91ckF1ZGllbmNlIn0.Yl2tquDnd1O4luph9_Op61q0-Cl8-2PR3S_3mcjJwf0'
+  
+  getJwtToken(): string {
+    const token = localStorage.getItem(this.JWT_TOKEN);
+    console.log('JWT Token:', token); 
+    return token || ''; 
+}
+
+getHeaders(): HttpHeaders {
+  let headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      Accept: 'application/json',
+  });
+
+  const token = this.getJwtToken();
+  if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+  }
+
+  console.log('Headers:', headers.keys()); 
+  return headers;
+}
+
+
+
+  getOptions(){
+    return { headers: this.getHeaders()};
+  }
+
+
   //#region Job
   getJobs():Observable<any>{
     return this.http.get<any>(`http://localhost:5127/api/Job`)
@@ -37,29 +73,23 @@ export class JobService {
 
 
   
-  // submitApplication(application: ApplicationDto): Observable<any> {
-  //   const formData = new FormData();
-    
-  //   // Append form fields to FormData
-  //   formData.append('name', application.name);
-  //   formData.append('email', application.email);
-  //   formData.append('jobId', application.jobId.toString());  // Ensure the jobId is a string
-  //   formData.append('resume', application.resume, application.resume.name);  // Add the resume file
-    
-  //   // Send the POST request to the backend
-  //   return this.http.post('http://localhost:5127/api/application/SubmitApplication', formData, {
-  //     headers: new HttpHeaders({
-  //       'Authorization': `Bearer ${this.authService.getToken()}`  // Add the authorization header with the token
-  //     })
-  //   }).pipe(
-  //     catchError((error) => {
-  //       // Log the error for debugging
-  //       console.error('Error occurred while submitting application:', error);
-  //       return throwError(() => new Error(error));  // Return the error to be handled by the caller
-  //     })
-  //   );
-  // }
-  
+  SubmitApplicationAuth(application: ApplicationDto): Observable<any> { 
+    const formData = new FormData();
+
+    formData.append('name', application.name);
+    formData.append('email', application.email);
+    formData.append('jobId', application.jobId.toString());
+    formData.append('resume', application.resume, application.resume.name);
+
+    const options = {
+        headers: this.getHeaders(),
+        observe: 'response' as const,
+    };
+
+    console.log('Request Options:', options);
+
+    return this.http.post(`${this.baseUrl}/application/SubmitApplicationAuth`, formData, options);
+}
 
 
   addjob(job:any):Observable<any>{

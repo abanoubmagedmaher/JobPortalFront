@@ -33,14 +33,18 @@ onSubmit(): void {
     return;
   }
 
-  this.JobService.submitApplication(this.application).subscribe(
+  this.JobService.SubmitApplicationAuth(this.application).subscribe(
     (data) => {
       this.toastr.success('Your application has been submitted successfully!', 'Success'); 
       this._router.navigate(['/applicationlist'])   
     },
     (error) => {
-      this.toastr.error(`An error occurred while submitting your application .`);
-    }
+      if (error.status === 401) {
+        this.toastr.warning('You need to log in to submit the Job application.', 'Unauthorized');
+        this._router.navigate(['/login']);
+      } else {
+        this.toastr.error('An error occurred while submitting your application.', 'Error');
+      }    }
   );
 }
 }
